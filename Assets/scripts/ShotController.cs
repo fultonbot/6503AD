@@ -15,6 +15,11 @@ public class ShotController : MonoBehaviour {
 		transform.Rotate(0, 10, 200* -Time.deltaTime);
 		transform.position += Vector3.up * speed * Time.deltaTime;
 		Vector3 exactPos = Camera.main.WorldToScreenPoint (transform.position);
+		Debug.Log ("shoty:" + exactPos.y);
+		Debug.Log ("ScreenHeight:" + Screen.height);
+		if (exactPos.y > Screen.height-5) {
+			Destroy (this.gameObject);
+		}
 
 	}
 }

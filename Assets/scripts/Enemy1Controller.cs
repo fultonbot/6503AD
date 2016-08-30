@@ -14,7 +14,10 @@ public class Enemy1Controller : MonoBehaviour {
 		transform.Rotate(0, 0, 100*Time.deltaTime);
 		transform.position += Vector3.down * speed * Time.deltaTime;
 		Vector3 exactPos = Camera.main.WorldToScreenPoint (transform.position);
-		Debug.Log(exactPos.x + "," + exactPos.y + "\n");
+		if (exactPos.y < 25) {
+			Destroy (this.gameObject);
+		}
+
 
 
 

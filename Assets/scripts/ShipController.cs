@@ -10,21 +10,30 @@ public class ShipController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 exactPos = Camera.main.WorldToScreenPoint (transform.position);
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
-			transform.position += Vector3.left * speed * Time.deltaTime;
+			if (exactPos.x > 0) {
+				transform.position += Vector3.left * speed * Time.deltaTime;
+			}
 		}
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
-			transform.position += Vector3.right * speed * Time.deltaTime;
+			if (exactPos.x < Screen.width) {
+				transform.position += Vector3.right * speed * Time.deltaTime;
+			}
 		}
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
-			transform.position += Vector3.up * speed * Time.deltaTime;
+			if (exactPos.y < Screen.height) {
+				transform.position += Vector3.up * speed * Time.deltaTime;
+			}
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
-			transform.position += Vector3.down * speed * Time.deltaTime;
+			if (exactPos.y > 0) {
+				transform.position += Vector3.down * speed * Time.deltaTime;
+			}
 		}
 	}
 }
